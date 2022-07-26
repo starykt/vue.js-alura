@@ -1,12 +1,13 @@
 <template>
 
-<div>
-  <h1>{{ titulo }}</h1>   <!-- ou <h1 v-text="titulo"> -->
+<div class="corpo">
+  <div class="titulo">
+    <h1 class="centralizar">{{ titulo }}</h1>   <!-- ou <h1 v-text="titulo"> -->
+  </div>
 
-  <ul>
-    <li v-for="foto of fotos"> <!-- v-for funciona como um while ou for para passar por cada valor do nosso array -->
+  <ul class="lista-fotos">
+    <li v-for="foto of fotos" class="lista-fotos-itens"> <!-- v-for funciona como um while ou for para passar por cada valor do nosso array -->
                                <!-- foto (é o paramêtro que está passando no img) e fotos (o nome do array) -->
-
       <img :src="foto.url" :alt="foto.titulo">
     </li>
 
@@ -42,5 +43,33 @@ export default {
 </script>
 
 <style>
+  .corpo {
+    font-family: Helvetica, sans-serif;
+    width: 95%;
+    margin: 0 auto;
+    background-color: rgba(168, 167, 167, 0.301);
+    border-radius: 0px 40px 80px 0px;
+  }
+
+  .centralizar {
+    text-align: center;
+  }
+
+  .titulo {
+    border-radius: 0px 15px 10px 15px;
+    background-color: rgba(100, 100, 100, 0.301); 
+    width: 20%;
+    color: rgb(33, 82, 110);
+    }
+
+  .lista-fotos {
+    list-style: none;
+  }
+
+  .lista-fotos .lista-fotos-itens {
+    display: inline-block;
+    padding: 5%;
+    
+  }
 
 </style>
