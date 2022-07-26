@@ -27,18 +27,15 @@ export default {
   data(){
     return {
       titulo: 'Alurapic',
-      fotos: [
-        {
-        url: 'https://i.pinimg.com/564x/d5/3f/f1/d53ff1e5e45113fe77a362b7086f4ea7.jpg',
-        titulo: 'Cachorro'
-        },
-
-        {
-        url: 'https://i.pinimg.com/564x/6f/a4/77/6fa477ff84a59abe2f7d07f13099326c.jpg',
-        titulo: 'Gatinho'
-        }
-      ]   
+      fotos: []   
     }
+  },
+
+  created() {
+    this.$http.get('http://localhost:3000/v1/fotos')
+    .then(resp => resp.json()) // pega o retorno da API e tranforma em .json
+    .then(fotos => this.fotos = fotos, err => console.log(err)); // pega as fotos do .json e 
+                                                                 // tranforma no modelo do data()
   }
 }
 
