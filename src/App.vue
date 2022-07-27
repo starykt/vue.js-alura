@@ -8,7 +8,15 @@
   <ul class="lista-fotos">
     <li v-for="foto of fotos" class="lista-fotos-itens"> <!-- v-for funciona como um while ou for para passar por cada valor do nosso array -->
                                <!-- foto (é o paramêtro que está passando no img) e fotos (o nome do array) -->
-      <img :src="foto.url" :alt="foto.titulo">
+      <div class="painel">
+        <h2 class="painel-titulo">{{ foto.titulo }}</h2>
+
+          <div class="painel-conteudo">
+            <img :src="foto.url" :alt="foto.titulo">
+          </div>
+
+      </div>
+      
     </li>
 
   </ul>
@@ -69,7 +77,6 @@ export default {
   .lista-fotos .lista-fotos-itens {
     display: inline-block;
     padding: 5%;
-    
   }
 
 </style>
