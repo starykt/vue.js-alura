@@ -3,6 +3,9 @@
 <div class="corpo">
   <div class="titulo">
     <h1 class="alinhamento">{{ titulo }}</h1>   <!-- ou <h1 v-text="titulo"> -->
+    <div class="filtrar">
+      <input type="search" class="filtrar" placeholder="Buscar por título">
+    </div>
   </div>
 
   <ul class="lista-fotos">
@@ -85,5 +88,21 @@ export default {
   .imagem-responsiva {
     width: 100%;
   }
+
+  .titulo .filtrar {
+    border-radius: 10px 15px 10px 15px;
+    position: absolute;
+    left: 82.5%;
+    top: 5%;
+    font-size: 14px;
+    border-color: rgb(33, 82, 110);
+    border: 1px;
+    color: rgb(33, 82, 110);
+    }
+
+    .filtrar::placeholder {
+      color: rgb(33, 82, 110);
+      font-weight: bold;
+    }
 
 </style>
