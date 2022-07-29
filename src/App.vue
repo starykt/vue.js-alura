@@ -2,7 +2,7 @@
 
 <div class="corpo">
   <div class="titulo">
-    <h1 class="centralizar">{{ titulo }}</h1>   <!-- ou <h1 v-text="titulo"> -->
+    <h1 class="alinhamento">{{ titulo }}</h1>   <!-- ou <h1 v-text="titulo"> -->
   </div>
 
   <ul class="lista-fotos">
@@ -12,7 +12,7 @@
         <h2 class="painel-titulo">{{ foto.titulo }}</h2>
 
           <div class="painel-conteudo">
-            <img :src="foto.url" :alt="foto.titulo">
+            <img class="imagem-responsiva" :src="foto.url" :alt="foto.titulo">
           </div>
 
       </div>
@@ -59,14 +59,15 @@ export default {
     border-radius: 0px 40px 80px 0px;
   }
 
-  .centralizar {
-    text-align: center;
+  .alinhamento {
+    text-align: left;
+    margin-left: 5px;
   }
 
   .titulo {
     border-radius: 0px 15px 10px 15px;
     background-color: rgba(100, 100, 100, 0.301); 
-    width: 20%;
+    width: 100%;
     color: rgb(33, 82, 110);
     }
 
@@ -77,6 +78,34 @@ export default {
   .lista-fotos .lista-fotos-itens {
     display: inline-block;
     padding: 5%;
+  }
+
+  .imagem-responsiva {
+    width: 100%;
+  }
+
+  /* estilo do painel */ 
+
+   .painel {
+    padding: 0 auto;
+    border: solid 2px rgba(168, 167, 167, 0.301);
+    display: inline-block;
+    margin: 5px;
+    box-shadow: 5px 5px 10px black;
+    width: 200px;
+    height: 100%;
+    vertical-align: top;
+    text-align: center;
+  }
+
+  .painel .painel-titulo {
+    text-align: center;
+    border: solid 2px rgba(100, 100, 100, 0.301);
+    background: rgba(33, 82, 110, 0.623);
+    margin: 0 0 15px 0;
+    padding: 10px;
+    text-transform: uppercase;
+    color: rgb(33, 82, 110);
   }
 
 </style>
