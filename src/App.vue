@@ -8,14 +8,10 @@
   <ul class="lista-fotos">
     <li v-for="foto of fotos" class="lista-fotos-itens"> <!-- v-for funciona como um while ou for para passar por cada valor do nosso array -->
                                <!-- foto (é o paramêtro que está passando no img) e fotos (o nome do array) -->
-      <div class="painel">
-        <h2 class="painel-titulo">{{ foto.titulo }}</h2>
-
-          <div class="painel-conteudo">
-            <img class="imagem-responsiva" :src="foto.url" :alt="foto.titulo">
-          </div>
-
-      </div>
+      
+      <meu-painel :titulo="foto.titulo">
+         <img class="imagem-responsiva" :src="foto.url" :alt="foto.titulo">
+      </meu-painel>
       
     </li>
 
@@ -32,7 +28,13 @@
 
 <script>
 
+import painel from './components/shared/painel/painel.vue'; // importa o componente
+
 export default {
+  components: {
+    'meu-painel' : painel
+  },
+
   data(){
     return {
       titulo: 'Alurapic',
@@ -82,30 +84,6 @@ export default {
 
   .imagem-responsiva {
     width: 100%;
-  }
-
-  /* estilo do painel */ 
-
-   .painel {
-    padding: 0 auto;
-    border: solid 2px rgba(168, 167, 167, 0.301);
-    display: inline-block;
-    margin: 5px;
-    box-shadow: 5px 5px 10px black;
-    width: 200px;
-    height: 100%;
-    vertical-align: top;
-    text-align: center;
-  }
-
-  .painel .painel-titulo {
-    text-align: center;
-    border: solid 2px rgba(100, 100, 100, 0.301);
-    background: rgba(33, 82, 110, 0.623);
-    margin: 0 0 15px 0;
-    padding: 10px;
-    text-transform: uppercase;
-    color: rgb(33, 82, 110);
   }
 
 </style>
