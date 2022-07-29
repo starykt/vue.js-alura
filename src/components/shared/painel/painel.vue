@@ -18,7 +18,7 @@ export default {
 
 </script>
 
-<style>
+<style scoped> /* o scoped faz com que o estilo só seja aplicado nesse componente */
 
   /* estilo do painel */ 
 
@@ -42,6 +42,10 @@ export default {
     padding: 10px;
     text-transform: uppercase;
     color: rgb(33, 82, 110);
+  }
+
+  * {
+    box-shadow: 5px 5px 5px;
   }
 
 </style>
