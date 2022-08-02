@@ -9,7 +9,7 @@
   </div>
 
   <ul class="lista-fotos">
-    <li v-for="foto of fotosFiltro" class="lista-fotos-itens"> <!-- v-for funciona como um while ou for para passar por cada valor do nosso array -->
+    <li v-for="foto of fotosComFiltro" class="lista-fotos-itens"> <!-- v-for funciona como um while ou for para passar por cada valor do nosso array -->
                                <!-- foto (é o paramêtro que está passando no img) e fotos (o nome do array) -->
       
       <meu-painel :titulo="foto.titulo">
@@ -47,19 +47,21 @@ export default {
   },
 
   computed: {
-    fotosFiltro() {
-      if(this.filtro) {
+    fotosComFiltro() {
+      if (this.filtro) {
         let exp = new RegExp(this.filtro.trim(), 'i'); // 'i' = tanto faz maiúsculo ou minúsculo e RegExp
                                                       // varre as fotos procurando a que tenha o texto do filtro
                                                       // .trim faz ele ignorar espaços vazios.
-        return this.fotos.filter(foto => exp.test(foto.titulo)); 
+
+        // retorna apenas as fotos que condizem com a expressão
+        return this.fotos.filter(foto => exp.test(foto.titulo));
         // .test testa se a foto.titulo tem a expressão do exp 
+
       } else {
-        this.fotos; // retorna a lista de fotos inteira caso não tenha filtro
-      }
-
+        // se o campo estiver vazio, não filtramos, retornamos a lista
+        return this.fotos;
+      };
     }
-
   },
 
   created() {
