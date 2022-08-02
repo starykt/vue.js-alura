@@ -4,12 +4,12 @@
   <div class="titulo">
     <h1 class="alinhamento">{{ titulo }}</h1>   <!-- ou <h1 v-text="titulo"> -->
     <div class="filtrar">
-      <input type="search" class="filtrar" placeholder="Buscar por título">
+      <input type="search" class="filtrar" v-on:input="filtro = $event.target.value" placeholder="Buscar por título">
     </div>
   </div>
 
   <ul class="lista-fotos">
-    <li v-for="foto of fotos" class="lista-fotos-itens"> <!-- v-for funciona como um while ou for para passar por cada valor do nosso array -->
+    <li v-for="foto of fotosFiltro" class="lista-fotos-itens"> <!-- v-for funciona como um while ou for para passar por cada valor do nosso array -->
                                <!-- foto (é o paramêtro que está passando no img) e fotos (o nome do array) -->
       
       <meu-painel :titulo="foto.titulo">
@@ -41,8 +41,25 @@ export default {
   data(){
     return {
       titulo: 'Alurapic',
-      fotos: []   
+      fotos: [],
+      filtro: '' // atualiza e armazena o que é inserido no visual do input de filtrar 
     }
+  },
+
+  computed: {
+    fotosFiltro() {
+      if(this.filtro) {
+        let exp = new RegExp(this.filtro.trim(), 'i'); // 'i' = tanto faz maiúsculo ou minúsculo e RegExp
+                                                      // varre as fotos procurando a que tenha o texto do filtro
+                                                      // .trim faz ele ignorar espaços vazios.
+        return this.fotos.filter(foto => exp.test(foto.titulo)); 
+        // .test testa se a foto.titulo tem a expressão do exp 
+      } else {
+        this.fotos; // retorna a lista de fotos inteira caso não tenha filtro
+      }
+
+    }
+
   },
 
   created() {
@@ -95,9 +112,9 @@ export default {
     left: 82.5%;
     top: 5%;
     font-size: 14px;
-    border-color: rgb(33, 82, 110);
+    border-color: rgba(33, 82, 110, 0.452);
     border: 1px;
-    color: rgb(33, 82, 110);
+    color: rgba(33, 82, 110, 0.774);
     }
 
     .filtrar::placeholder {
